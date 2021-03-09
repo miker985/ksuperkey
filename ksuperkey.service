@@ -1,0 +1,13 @@
+# Save to ~/.config/systemd/user/ksuperkey.service
+# Enable with `systemctl --user enable ksuperkey`
+# Start with `systemctl --user start ksuperkey`
+[Unit]
+Description=Fix super key behavior with ksuperkey
+
+[Service]
+# NOTE: leaving off "-d" does not appear to start the process in debug mode correctly
+#       if you manually run it (without -d) you'll get exactly what you want
+ExecStart=/usr/bin/ksuperkey -d -e Super_L=Alt_L|s
+
+[Install]
+WantedBy=default.target
